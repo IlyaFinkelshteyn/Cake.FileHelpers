@@ -1,7 +1,9 @@
 version: 1.0.{build}
 image: Visual Studio 2015
 before_build:
+- ps: $env:path -split ";" | findstr /psi "nunit"
 - set path=C:\Tools\NUnit3;%path%
+- ps: $env:path -split ";" | findstr /psi "nunit"
 build_script:
 - cmd: PowerShell -Version 2.0 .\build.ps1
 test: off
